@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora</title>
+</head>
+<body>
+  <h1>Calculadora</h1>
+  <input id="a" type="number" min="-99999" max="99999" step="1">
+  <select id="op">
+    <option value="1">Suma</option>
+    <option value="2">Resta</option>
+    <option value="3">Multiplicación</option>
+    <option value="4">Potencia</option>
+  </select>
+  <input id="b" type="number" min="-99999" max="99999" step="1">
+  <button onclick="calcular()">Calcular</button>
+  <p id="resultado"></p>
+
+  <script>
+    function calcular() {
+      const a = Number(document.getElementById("a").value);
+      const b = Number(document.getElementById("b").value);
+      const op = document.getElementById("op").value;
+      let r;
+      if (Math.abs(a) > 99999 || Math.abs(b) > 99999) {
+        r = "Número fuera de rango";
+      } else if (op == 1) r = a + b;
+      else if (op == 2) r = a - b;
+      else if (op == 3) r = a * b;
+      else r = Math.pow(a, b);
+      document.getElementById("resultado").innerText = r;
+    }
+  </script>
+</body>
+</html>
